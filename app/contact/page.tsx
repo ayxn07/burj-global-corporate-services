@@ -24,8 +24,8 @@ export default function ContactPage() {
                 backgroundImage="/Hero-Section-Images/Hero-section-image-6.png"
             />
 
-            <section className="py-24">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                         {/* Contact Info */}
                         <div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                         </div>
 
                         {/* Contact Form */}
-                        <div className="bg-zinc-900/50 p-8 rounded-2xl border border-white/10">
+                        <div className="bg-zinc-900/50 p-6 sm:p-8 rounded-2xl border border-white/10">
                             <h3 className="text-2xl font-bold text-white mb-6">Book a Consultation</h3>
                             <form className="space-y-6">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -136,8 +136,8 @@ export default function ContactPage() {
             </section>
 
             {/* FAQ Section */}
-            <section className="py-24 bg-zinc-900/30">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24 bg-zinc-900/30">
+                <div className="container mx-auto px-4 sm:px-6">
                     <SectionTitle
                         title="Frequently Asked Questions"
                         subtitle="Got Questions?"
@@ -150,8 +150,8 @@ export default function ContactPage() {
             </section>
 
             {/* Map Section */}
-            <section className="py-24 bg-zinc-900/30">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24 bg-zinc-900/30">
+                <div className="container mx-auto px-4 sm:px-6">
                     <SectionTitle
                         title="Find Us"
                         subtitle="Our Location"
@@ -160,7 +160,7 @@ export default function ContactPage() {
                     <div className="mt-16 max-w-6xl mx-auto">
                         <div className="relative group">
                             <div className="absolute inset-0 bg-gold/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="relative rounded-3xl overflow-hidden border-2 border-gold/20 group-hover:border-gold transition-all duration-500 h-[500px]">
+                            <div className="relative rounded-3xl overflow-hidden border-2 border-gold/20 group-hover:border-gold transition-all duration-500 h-[300px] sm:h-[400px] lg:h-[500px]">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28868.84364989667!2d55.25693594863281!3d25.19547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sSheikh%20Zayed%20Road%20-%20Dubai!5e0!3m2!1sen!2sae!4v1732473600000!5m2!1sen!2sae"
                                     width="100%"

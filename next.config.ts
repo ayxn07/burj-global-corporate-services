@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // Allow the custom quality values used across the app
+    qualities: [60, 75],
     remotePatterns: [
       {
         protocol: 'https',
@@ -11,7 +13,6 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
       },
-
     ],
   },
 };

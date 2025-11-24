@@ -113,12 +113,12 @@ const PerspectiveGrid = () => {
                                     className="grid_item relative grid aspect-[1.5] h-auto w-full place-items-center overflow-hidden rounded-md"
                                 >
                                     <Image
-                                        objectFit="cover"
-                                        quality={60}
                                         src={src}
-                                        fill={true}
-                                        className="grid_item-inner relative h-auto min-w-[300px]"
                                         alt="image"
+                                        fill
+                                        quality={60}
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                                        className="grid_item-inner relative h-auto min-w-[300px] object-cover"
                                     />
                                 </div>
                             ))}

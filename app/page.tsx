@@ -66,8 +66,8 @@ export default function Home() {
 
 
       {/* Who We Are Section */}
-      <section className="py-24 bg-zinc-900/50">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24 bg-zinc-900/50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -115,15 +115,15 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10"
             >
-              <img src="Homepage-main.png" className="object-cover h-full w-full" alt="" />
+              <img src="Homepage-Main.png" className="object-cover h-full w-full" alt="" />
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* What We Do Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export default function Home() {
       </section>
 
       {/* How We Work - Process Section */}
-      <section className="py-24 bg-zinc-900/30">
+      <section className="py-16 sm:py-24 bg-zinc-900/30">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -227,8 +227,8 @@ export default function Home() {
       </section>
 
       {/* Industries We Serve */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -271,7 +271,7 @@ export default function Home() {
       </section>
 
       {/* Key Features Section */}
-      <section className="py-24 bg-linear-to-b from-zinc-900/30 to-black">
+      <section className="py-16 sm:py-24 bg-linear-to-b from-zinc-900/30 to-black">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -321,8 +321,8 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -381,8 +381,8 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-24 bg-zinc-900/30">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24 bg-zinc-900/50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -457,8 +457,8 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-24 bg-zinc-900/30">
-        <div className="container mx-auto px-6">
+      <section className="py-16 sm:py-24 bg-zinc-900/50">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

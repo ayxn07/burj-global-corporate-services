@@ -5,7 +5,7 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
     const [isHovering, setIsHovering] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
@@ -20,11 +20,15 @@ export default function CustomCursor() {
     useEffect(() => {
         // Check if device is mobile/touch device
         const checkMobile = () => {
-            setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+            if (typeof window !== 'undefined') {
+                setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+            }
         };
-        
+
         checkMobile();
-        window.addEventListener('resize', checkMobile);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', checkMobile);
+        }
 
         const moveCursor = (e: MouseEvent) => {
             cursorX.set(e.clientX);
@@ -34,7 +38,7 @@ export default function CustomCursor() {
         const handleMouseEnter = () => setIsHovering(true);
         const handleMouseLeave = () => setIsHovering(false);
 
-        if (!isMobile) {
+        if (!isMobile && typeof window !== 'undefined') {
             window.addEventListener("mousemove", moveCursor);
         }
 
@@ -49,13 +53,21 @@ export default function CustomCursor() {
         });
 
         return () => {
-            window.removeEventListener("mousemove", moveCursor);
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', checkMobile);
+                window.removeEventListener("mousemove", moveCursor);
+            }
             interactiveElements.forEach((el) => {
                 el.removeEventListener("mouseenter", handleMouseEnter);
                 el.removeEventListener("mouseleave", handleMouseLeave);
             });
         };
-    }, [cursorX, cursorY]);
+    }, [cursorX, cursorY, isMobile]);
+
+    // Don't render cursor on mobile devices
+    if (isMobile) {
+        return null;
+    }
 
     return (
         <>

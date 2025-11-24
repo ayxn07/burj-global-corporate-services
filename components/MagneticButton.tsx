@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -23,8 +23,23 @@ export default function MagneticButton({
 }: MagneticButtonProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            if (typeof window !== 'undefined') {
+                setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+            }
+        };
+        checkMobile();
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', checkMobile);
+            return () => window.removeEventListener('resize', checkMobile);
+        }
+    }, []);
 
     const handleMouse = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (isMobile) return;
         const { clientX, clientY } = e;
         const { width, height, left, top } = ref.current!.getBoundingClientRect();
         const x = clientX - (left + width / 2);
@@ -55,10 +70,10 @@ export default function MagneticButton({
         >
             <Component
                 {...props}
-                animate={{ x: position.x * 0.3, y: position.y * 0.3 }}
-                transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
+                animate={isMobile ? {} : { x: position.x * 0.3, y: position.y * 0.3 }}
+                transition={isMobile ? {} : { type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
                 className={cn(
-                    "px-8 py-3 rounded-full font-semibold transition-colors duration-300 inline-block",
+                    "px-6 sm:px-8 py-2.5 sm:py-3 rounded-full font-semibold transition-colors duration-300 inline-block text-sm sm:text-base",
                     variantStyles[variant],
                     className
                 )}

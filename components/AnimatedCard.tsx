@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 interface AnimatedCardProps {
@@ -11,6 +11,20 @@ interface AnimatedCardProps {
 export default function AnimatedCard({ children, className }: AnimatedCardProps) {
     const ref = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            if (typeof window !== 'undefined') {
+                setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+            }
+        };
+        checkMobile();
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', checkMobile);
+            return () => window.removeEventListener('resize', checkMobile);
+        }
+    }, []);
 
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -19,7 +33,7 @@ export default function AnimatedCard({ children, className }: AnimatedCardProps)
     const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!ref.current) return;
+        if (!ref.current || isMobile) return;
 
         const rect = ref.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -39,14 +53,14 @@ export default function AnimatedCard({ children, className }: AnimatedCardProps)
     return (
         <motion.div
             ref={ref}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseMove={isMobile ? undefined : handleMouseMove}
+            onMouseEnter={isMobile ? undefined : handleMouseEnter}
+            onMouseLeave={isMobile ? undefined : handleMouseLeave}
             className={`relative group ${className || ""}`}
             style={{
-                transformStyle: "preserve-3d",
+                transformStyle: isMobile ? "flat" : "preserve-3d",
             }}
-            animate={{
+            animate={isMobile ? {} : {
                 rotateX: isHovered ? mouseYSpring.get() * 0.05 : 0,
                 rotateY: isHovered ? mouseXSpring.get() * 0.05 : 0,
             }}

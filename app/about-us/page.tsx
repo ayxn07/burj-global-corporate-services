@@ -35,8 +35,8 @@ export default function AboutPage() {
             />
 
             {/* Intro Section */}
-            <section className="py-24 bg-zinc-900/30">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24 bg-zinc-900/30">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div>
                             <SectionTitle
@@ -63,8 +63,8 @@ export default function AboutPage() {
             </section>
 
             {/* Vision & Mission */}
-            <section className="py-24">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
@@ -227,7 +227,7 @@ export default function AboutPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="py-32 relative overflow-hidden">
+            <section className="py-20 sm:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gold/10" />
                 <div className="container mx-auto px-6 relative z-10 text-center">
                     <motion.h2

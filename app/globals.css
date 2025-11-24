@@ -52,10 +52,58 @@ body {
   background: var(--gold);
 }
 
-/* Remove default cursor on interactive elements */
-a,
-button,
-[data-magnetic],
-.cursor-pointer {
-  cursor: none !important;
+/* Remove default cursor on interactive elements (desktop only) */
+@media (min-width: 1024px) {
+
+  a,
+  button,
+  [data-magnetic],
+  .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+/* Container max-width for content alignment */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ensure proper mobile spacing */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
+}
+
+/* Prevent any element from causing overflow */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure motion elements don't cause overflow */
+[class*="motion"],
+[style*="transform"] {
+  will-change: transform;
+}
+
+/* Fix for Framer Motion elements */
+body>div {
+  overflow-x: hidden;
 }

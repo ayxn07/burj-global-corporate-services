@@ -233,7 +233,7 @@ export default function Navbar() {
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
                                     transition={{ duration: 0.3 }}
-                                    className="fixed inset-0 bg-black/90 backdrop-blur-md z-40 lg:hidden"
+                                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
                                     onClick={() => setIsOpen(false)}
                                 />
 
@@ -247,23 +247,36 @@ export default function Navbar() {
                                         damping: 30,
                                         stiffness: 300
                                     }}
-                                    className="fixed top-0 right-0 h-full w-[85%] max-w-md bg-black/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-l-2 border-gold/30"
+                                    className="fixed top-0 right-0 h-full w-[85%] max-w-md bg-black/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-l-2 border-gold/30 shadow-2xl shadow-gold/20"
                                 >
                                     {/* Decorative background elements */}
-                                    <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl" />
-                                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl" />
+                                    <motion.div
+                                        className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"
+                                        animate={{
+                                            scale: [1, 1.2, 1],
+                                            opacity: [0.1, 0.15, 0.1]
+                                        }}
+                                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    />
+                                    <motion.div
+                                        className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl"
+                                        animate={{
+                                            scale: [1, 1.3, 1],
+                                            opacity: [0.05, 0.1, 0.05]
+                                        }}
+                                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                    />
+
+                                    {/* Gold accent line */}
+                                    <motion.div
+                                        className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-transparent via-gold to-transparent"
+                                        initial={{ scaleY: 0 }}
+                                        animate={{ scaleY: 1 }}
+                                        transition={{ duration: 0.5, delay: 0.2 }}
+                                    />
 
                                     {/* Menu Content */}
-                                    <div className="relative z-10 p-8 pt-24">
-                                        {/* Close Button */}
-                                        <motion.button
-                                            whileTap={{ scale: 0.9, rotate: 90 }}
-                                            className="absolute top-8 right-8 text-white/80 hover:text-gold transition-colors"
-                                            onClick={() => setIsOpen(false)}
-                                        >
-                                            <X className="w-8 h-8" />
-                                        </motion.button>
-
+                                    <div className="relative z-10 p-8 pt-28">
                                         {/* Navigation Links */}
                                         <nav className="flex flex-col gap-2">
                                             {navLinks.map((link, i) => (

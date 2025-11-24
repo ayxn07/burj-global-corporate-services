@@ -17,11 +17,21 @@ export default function ServiceCard({ title, description, icon, href, index }: S
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-gold/50 transition-all duration-300 hover:-translate-y-2"
+            transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-gold/50 transition-colors duration-300 will-change-transform"
         >
-            <div className="absolute inset-0 bg-linear-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+            <motion.div
+                className="absolute inset-0"
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+            />
+            <motion.div
+                className="absolute inset-0 bg-linear-to-br from-gold/10 to-transparent rounded-2xl"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+            />
 
             <div className="relative z-10">
                 <div className="w-12 h-12 mb-6 rounded-full bg-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-black transition-colors duration-300">
