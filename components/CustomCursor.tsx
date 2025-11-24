@@ -5,6 +5,7 @@ import { motion, useSpring, useMotionValue } from "framer-motion";
 
 export default function CustomCursor() {
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
@@ -17,6 +18,14 @@ export default function CustomCursor() {
     const innerY = useSpring(cursorY, innerSpringConfig);
 
     useEffect(() => {
+        // Check if device is mobile/touch device
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         const moveCursor = (e: MouseEvent) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
@@ -25,7 +34,9 @@ export default function CustomCursor() {
         const handleMouseEnter = () => setIsHovering(true);
         const handleMouseLeave = () => setIsHovering(false);
 
-        window.addEventListener("mousemove", moveCursor);
+        if (!isMobile) {
+            window.addEventListener("mousemove", moveCursor);
+        }
 
         // Add listeners to all interactive elements
         const interactiveElements = document.querySelectorAll(
