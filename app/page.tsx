@@ -241,29 +241,29 @@ export default function Home() {
               centered
             />
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
             {[
-              { name: "Technology & IT", icon: <Zap className="w-6 h-6" /> },
-              { name: "E-commerce", icon: <Globe className="w-6 h-6" /> },
-              { name: "Consulting", icon: <Briefcase className="w-6 h-6" /> },
-              { name: "Real Estate", icon: <Building2 className="w-6 h-6" /> },
-              { name: "Trading", icon: <TrendingUp className="w-6 h-6" /> },
-              { name: "Healthcare", icon: <Shield className="w-6 h-6" /> },
-              { name: "Marketing", icon: <Megaphone className="w-6 h-6" /> },
-              { name: "Creative Industries", icon: <Palette className="w-6 h-6" /> },
+              { name: "Technology & IT", icon: <Zap className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "E-commerce", icon: <Globe className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Consulting", icon: <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Real Estate", icon: <Building2 className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Trading", icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Healthcare", icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Marketing", icon: <Megaphone className="w-5 h-5 sm:w-6 sm:h-6" /> },
+              { name: "Creative Industries", icon: <Palette className="w-5 h-5 sm:w-6 sm:h-6" /> },
             ].map((industry, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
-                viewport={{ once: true }}
-                className="group p-6 rounded-2xl bg-linear-to-br from-zinc-900/50 to-black border border-white/10 hover:border-gold/50 transition-all duration-300 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.05, duration: 0.4, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="group p-4 sm:p-6 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-gold/50 transition-colors duration-300 text-center"
               >
-                <div className="w-14 h-14 mx-auto rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all duration-300">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 mx-auto rounded-full bg-gold/10 flex items-center justify-center text-gold mb-3 sm:mb-4 group-hover:bg-gold group-hover:text-black transition-colors duration-300">
                   {industry.icon}
                 </div>
-                <h3 className="text-white/90 font-semibold group-hover:text-gold transition-colors">{industry.name}</h3>
+                <h3 className="text-white/90 font-semibold text-sm sm:text-base group-hover:text-gold transition-colors">{industry.name}</h3>
               </motion.div>
             ))}
           </div>
@@ -272,7 +272,7 @@ export default function Home() {
 
       {/* Key Features Section */}
       <section className="py-16 sm:py-24 bg-linear-to-b from-zinc-900/30 to-black">
-        <div className="container mx-auto px-6">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -285,34 +285,30 @@ export default function Home() {
               centered
             />
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
             {[
-              { title: "Licensed & Regulated", desc: "Fully authorized corporate services provider in the UAE", icon: <Shield className="w-8 h-8" /> },
-              { title: "Fast Track Processing", desc: "Quick turnaround times with priority government channels", icon: <Zap className="w-8 h-8" /> },
-              { title: "Expert Team", desc: "Experienced consultants with deep market knowledge", icon: <Award className="w-8 h-8" /> },
-              { title: "Fixed Pricing", desc: "Transparent costs with no hidden fees or surprises", icon: <CheckCircle className="w-8 h-8" /> },
-              { title: "24/7 Support", desc: "Round-the-clock assistance for all your queries", icon: <Users className="w-8 h-8" /> },
-              { title: "Complete Solutions", desc: "One-stop-shop for all business and creative needs", icon: <Sparkles className="w-8 h-8" /> },
+              { title: "Licensed & Regulated", desc: "Fully authorized corporate services provider in the UAE", icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" /> },
+              { title: "Fast Track Processing", desc: "Quick turnaround times with priority government channels", icon: <Zap className="w-6 h-6 sm:w-8 sm:h-8" /> },
+              { title: "Expert Team", desc: "Experienced consultants with deep market knowledge", icon: <Award className="w-6 h-6 sm:w-8 sm:h-8" /> },
+              { title: "Fixed Pricing", desc: "Transparent costs with no hidden fees or surprises", icon: <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8" /> },
+              { title: "24/7 Support", desc: "Round-the-clock assistance for all your queries", icon: <Users className="w-6 h-6 sm:w-8 sm:h-8" /> },
+              { title: "Complete Solutions", desc: "One-stop-shop for all business and creative needs", icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" /> },
             ].map((feature, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                className="group relative overflow-hidden"
+                transition={{ delay: i * 0.08, duration: 0.5, ease: "easeOut" }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="group relative"
               >
-                <div className="absolute inset-0 bg-linear-to-br from-gold/20 via-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
-                <div className="relative p-10 rounded-3xl border-2 border-gold/30 bg-linear-to-br from-zinc-900/50 to-black group-hover:border-gold transition-all duration-500 h-full">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-3xl group-hover:bg-gold/20 transition-all duration-500" />
-                  <div className="rela  tive">
-                    <div className="w-20 h-20 rounded-2xl bg-gold/20 flex items-center justify-center text-gold mb-8 group-hover:bg-gold group-hover:text-black transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                      {feature.icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-gold transition-colors">{feature.title}</h3>
-                    <p className="text-white/70 leading-relaxed text-base">{feature.desc}</p>
+                <div className="absolute inset-0 bg-linear-to-br from-gold/20 via-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl sm:rounded-3xl" />
+                <div className="relative p-6 sm:p-10 rounded-2xl sm:rounded-3xl border-2 border-gold/30 bg-zinc-900/50 group-hover:border-gold transition-colors duration-300 h-full">
+                  <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl bg-gold/20 flex items-center justify-center text-gold mb-4 sm:mb-8 group-hover:bg-gold group-hover:text-black transition-colors duration-300">
+                    {feature.icon}
                   </div>
+                  <h3 className="text-lg sm:text-2xl font-bold text-white mb-2 sm:mb-4 group-hover:text-gold transition-colors">{feature.title}</h3>
+                  <p className="text-white/70 leading-relaxed text-sm sm:text-base">{feature.desc}</p>
                 </div>
               </motion.div>
             ))}

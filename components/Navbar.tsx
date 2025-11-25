@@ -249,7 +249,7 @@ export default function Navbar() {
                                 damping: 30,
                                 stiffness: 300
                             }}
-                            className="fixed top-0 right-0 h-screen w-[85vw] max-w-sm bg-black border-l-2 border-gold/30 z-60 lg:hidden"
+                            className="fixed top-0 -right-5 h-screen w-[85vw] max-w-sm bg-black border-l-2 border-gold/30 z-60 lg:hidden"
                             style={{ height: '100dvh' }}
                         >
                             {/* Close Button */}

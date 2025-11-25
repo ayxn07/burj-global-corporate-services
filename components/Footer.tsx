@@ -9,8 +9,8 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                     {/* Brand */}
                     <div className="space-y-6">
-                        <Link href="/" className="relative z-50" data-magnetic>
-                            <div className="relative h-20 w-50 overflow-hidden ">
+                        <Link href="/" data-magnetic>
+                            <div className="relative h-20 w-50 overflow-hidden">
                                 <Image
                                     src="/Logo.jpeg"
                                     alt="Burj Global Logo"

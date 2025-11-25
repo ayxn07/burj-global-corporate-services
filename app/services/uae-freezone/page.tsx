@@ -29,9 +29,9 @@ export default function FreezonePage() {
                 backgroundImage="/Hero-Section-Images/Hero-section-image-3.png"
             />
 
-            <section className="py-24">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <section className="py-16 sm:py-24">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
                         <div>
                             <SectionTitle
                                 title="Why UAE Freezones?"
@@ -93,26 +93,26 @@ export default function FreezonePage() {
             </section>
 
             {/* Benefits Section */}
-            <section className="py-24 bg-zinc-900/30">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24 bg-zinc-900/30">
+                <div className="container mx-auto px-4 sm:px-6">
                     <SectionTitle
                         title="Freezone Advantages"
                         subtitle="Why Businesses Choose Freezones"
                         centered
                     />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
                         {[
-                            { icon: <Shield className="w-8 h-8" />, title: "100% Ownership", desc: "Full foreign ownership with complete control" },
-                            { icon: <DollarSign className="w-8 h-8" />, title: "Tax Benefits", desc: "0% corporate and personal income tax" },
-                            { icon: <Clock className="w-8 h-8" />, title: "Quick Setup", desc: "Get licensed in 3-5 business days" },
-                            { icon: <FileText className="w-8 h-8" />, title: "Easy Compliance", desc: "Simplified reporting and regulations" },
+                            { icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" />, title: "100% Ownership", desc: "Full foreign ownership with complete control" },
+                            { icon: <DollarSign className="w-6 h-6 sm:w-8 sm:h-8" />, title: "Tax Benefits", desc: "0% corporate and personal income tax" },
+                            { icon: <Clock className="w-6 h-6 sm:w-8 sm:h-8" />, title: "Quick Setup", desc: "Get licensed in 3-5 business days" },
+                            { icon: <FileText className="w-6 h-6 sm:w-8 sm:h-8" />, title: "Easy Compliance", desc: "Simplified reporting and regulations" },
                         ].map((benefit, i) => (
-                            <div key={i} className="p-8 bg-black rounded-2xl border-2 border-gold/20 text-center hover:border-gold transition-all group">
-                                <div className="w-16 h-16 mx-auto rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-black transition-all">
+                            <div key={i} className="p-4 sm:p-8 bg-black rounded-xl sm:rounded-2xl border-2 border-gold/20 text-center hover:border-gold transition-colors group">
+                                <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto rounded-full bg-gold/10 flex items-center justify-center text-gold mb-3 sm:mb-4 group-hover:bg-gold group-hover:text-black transition-colors">
                                     {benefit.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-white mb-2 group-hover:text-gold transition-colors">{benefit.title}</h3>
-                                <p className="text-white/70 text-sm">{benefit.desc}</p>
+                                <h3 className="text-sm sm:text-lg font-bold text-white mb-1 sm:mb-2 group-hover:text-gold transition-colors">{benefit.title}</h3>
+                                <p className="text-white/70 text-xs sm:text-sm hidden sm:block">{benefit.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -120,14 +120,14 @@ export default function FreezonePage() {
             </section>
 
             {/* Detailed Freezone Comparison */}
-            <section className="py-24">
-                <div className="container mx-auto px-6">
+            <section className="py-16 sm:py-24">
+                <div className="container mx-auto px-4 sm:px-6">
                     <SectionTitle
                         title="Top Freezone Packages"
                         subtitle="Comprehensive Comparison"
                         centered
                     />
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16">
                         {[
                             {
                                 name: "IFZA Dubai",

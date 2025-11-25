@@ -19,9 +19,9 @@ export default function OffshorePage() {
                 backgroundImage="/Hero-Section-Images/Hero-section-image-4.png"
             />
 
-            <section className="py-24">
-                <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <section className="py-16 sm:py-24">
+                <div className="container mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                         <div>
                             <SectionTitle
                                 title="Why Go Offshore?"
