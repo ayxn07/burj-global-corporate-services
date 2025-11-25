@@ -132,7 +132,6 @@ export default function FreezonePage() {
                             {
                                 name: "IFZA Dubai",
                                 icon: "🏢",
-                                cost: "AED 9,900",
                                 setup: "2-3 days",
                                 visas: "1-3 Visas",
                                 activities: "500+ Activities",
@@ -143,7 +142,6 @@ export default function FreezonePage() {
                             {
                                 name: "DMCC Dubai",
                                 icon: "💎",
-                                cost: "AED 22,500",
                                 setup: "3-5 days",
                                 visas: "Flexible quota",
                                 activities: "Trading focus",
@@ -154,7 +152,6 @@ export default function FreezonePage() {
                             {
                                 name: "RAKEZ",
                                 icon: "🌟",
-                                cost: "AED 11,000",
                                 setup: "2-4 days",
                                 visas: "2-6 Visas",
                                 activities: "Unlimited",
@@ -165,7 +162,6 @@ export default function FreezonePage() {
                             {
                                 name: "SHAMS Sharjah",
                                 icon: "📱",
-                                cost: "AED 8,500",
                                 setup: "1-2 days",
                                 visas: "1-2 Visas",
                                 activities: "Media & tech",
@@ -182,15 +178,11 @@ export default function FreezonePage() {
                                 )}
                                 <div className="absolute inset-0 bg-gold/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className={`relative p-6 rounded-3xl h-full transition-all duration-500 ${zone.popular
-                                        ? 'bg-linear-to-br from-gold/10 to-black border-2 border-gold'
-                                        : 'bg-black border-2 border-gold/20 group-hover:border-gold'
+                                    ? 'bg-linear-to-br from-gold/10 to-black border-2 border-gold'
+                                    : 'bg-black border-2 border-gold/20 group-hover:border-gold'
                                     }`}>
                                     <div className="text-5xl mb-4 text-center">{zone.icon}</div>
-                                    <h3 className="text-xl font-bold text-gold mb-3 text-center">{zone.name}</h3>
-                                    <div className="text-center mb-4">
-                                        <span className="text-2xl font-bold text-white">{zone.cost}</span>
-                                        <span className="text-white/60 text-sm">/year</span>
-                                    </div>
+                                    <h3 className="text-xl font-bold text-gold mb-4 text-center">{zone.name}</h3>
                                     <div className="space-y-2 mb-4 text-sm">
                                         <p className="text-white/80"><span className="text-gold">⏱</span> Setup: {zone.setup}</p>
                                         <p className="text-white/80"><span className="text-gold">👥</span> {zone.visas}</p>

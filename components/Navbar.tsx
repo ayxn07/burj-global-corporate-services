@@ -194,8 +194,8 @@ export default function Navbar() {
 
                     {/* Mobile Toggle */}
                     <motion.button
-                        whileTap={{ scale: 0.9, rotate: isOpen ? 90 : 0 }}
-                        className="lg:hidden relative z-50 w-10 h-10 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 text-white hover:bg-gold/20 transition-colors"
+                        whileTap={{ scale: 0.9 }}
+                        className="lg:hidden relative z-60 w-10 h-10 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 text-white hover:bg-gold/20 transition-colors"
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         <AnimatePresence mode="wait">
@@ -222,188 +222,172 @@ export default function Navbar() {
                             )}
                         </AnimatePresence>
                     </motion.button>
+                </div>
+            </div>
 
-                    {/* Mobile Menu */}
-                    <AnimatePresence>
-                        {isOpen && (
-                            <>
-                                {/* Mobile Menu Backdrop */}
+            {/* Mobile Menu - Outside the nav container to avoid overflow clipping */}
+            <AnimatePresence>
+                {isOpen && (
+                    <>
+                        {/* Mobile Menu Backdrop */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-55 lg:hidden"
+                            onClick={() => setIsOpen(false)}
+                        />
+
+                        {/* Mobile Menu Drawer */}
+                        <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{
+                                type: "spring",
+                                damping: 30,
+                                stiffness: 300
+                            }}
+                            className="fixed top-0 -right-5 h-screen w-[85vw] max-w-sm bg-black border-l-2 border-gold/30 z-60 lg:hidden"
+                            style={{ height: '100dvh' }}
+                        >
+                            {/* Decorative background elements */}
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
+
+                            {/* Gold accent line */}
+                            <motion.div
+                                className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-transparent via-gold to-transparent"
+                                initial={{ scaleY: 0 }}
+                                animate={{ scaleY: 1 }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                            />
+
+                            {/* Scrollable Menu Content */}
+                            <div className="relative z-10 h-full overflow-y-auto p-6 pt-24 pb-8">
+                                {/* Navigation Links */}
+                                <nav className="flex flex-col gap-1">
+                                    {navLinks.map((link, i) => (
+                                        <motion.div
+                                            key={link.name}
+                                            initial={{ opacity: 0, x: 50 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{
+                                                delay: i * 0.08,
+                                                type: "spring",
+                                                stiffness: 300,
+                                                damping: 24
+                                            }}
+                                            className="border-b border-white/5"
+                                        >
+                                            {link.dropdown ? (
+                                                <div>
+                                                    {/* Dropdown Trigger */}
+                                                    <button
+                                                        onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
+                                                        className="w-full flex items-center justify-between py-4 px-2 text-lg font-medium text-white hover:text-gold transition-colors group"
+                                                    >
+                                                        <span>{link.name}</span>
+                                                        <motion.div
+                                                            animate={{ rotate: mobileDropdownOpen ? 180 : 0 }}
+                                                            transition={{ duration: 0.3 }}
+                                                        >
+                                                            <ChevronDown className="w-5 h-5 group-hover:text-gold transition-colors" />
+                                                        </motion.div>
+                                                    </button>
+
+                                                    {/* Dropdown Items */}
+                                                    <AnimatePresence>
+                                                        {mobileDropdownOpen && (
+                                                            <motion.div
+                                                                initial={{ height: 0, opacity: 0 }}
+                                                                animate={{ height: "auto", opacity: 1 }}
+                                                                exit={{ height: 0, opacity: 0 }}
+                                                                transition={{
+                                                                    duration: 0.3,
+                                                                    ease: "easeInOut"
+                                                                }}
+                                                                className="overflow-hidden bg-zinc-900/50 rounded-xl mb-2"
+                                                            >
+                                                                <div className="py-2">
+                                                                    {link.dropdown.map((item, idx) => (
+                                                                        <motion.div
+                                                                            key={item.name}
+                                                                            initial={{ opacity: 0, x: -20 }}
+                                                                            animate={{ opacity: 1, x: 0 }}
+                                                                            transition={{
+                                                                                delay: idx * 0.05,
+                                                                                type: "spring",
+                                                                                stiffness: 400
+                                                                            }}
+                                                                        >
+                                                                            <Link
+                                                                                href={item.href}
+                                                                                onClick={() => {
+                                                                                    setIsOpen(false);
+                                                                                    setMobileDropdownOpen(false);
+                                                                                }}
+                                                                                className="block py-3 px-4 text-sm text-white/70 hover:text-gold hover:bg-gold/5 transition-all"
+                                                                            >
+                                                                                {item.name}
+                                                                            </Link>
+                                                                        </motion.div>
+                                                                    ))}
+                                                                </div>
+                                                            </motion.div>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
+                                            ) : (
+                                                <Link
+                                                    href={link.href}
+                                                    onClick={() => setIsOpen(false)}
+                                                    className="block py-4 px-2 text-lg font-medium text-white hover:text-gold transition-colors"
+                                                >
+                                                    {link.name}
+                                                </Link>
+                                            )}
+                                        </motion.div>
+                                    ))}
+                                </nav>
+
+                                {/* CTA Button */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.4 }}
+                                    className="mt-8"
+                                >
+                                    <Link
+                                        href="/contact"
+                                        onClick={() => setIsOpen(false)}
+                                        className="block w-full py-4 text-center bg-gold text-black font-bold rounded-xl hover:bg-gold/90 transition-all"
+                                    >
+                                        Contact Us
+                                    </Link>
+                                </motion.div>
+
+                                {/* Contact Info */}
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.3 }}
-                                    className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 lg:hidden"
-                                    onClick={() => setIsOpen(false)}
-                                />
-
-                                {/* Mobile Menu Drawer */}
-                                <motion.div
-                                    initial={{ x: "100%" }}
-                                    animate={{ x: 0 }}
-                                    exit={{ x: "100%" }}
-                                    transition={{
-                                        type: "spring",
-                                        damping: 30,
-                                        stiffness: 300
-                                    }}
-                                    className="fixed top-0 right-0 h-full w-[85%] max-w-md bg-black/95 backdrop-blur-xl z-50 lg:hidden overflow-y-auto border-l-2 border-gold/30 shadow-2xl shadow-gold/20"
+                                    transition={{ delay: 0.5 }}
+                                    className="mt-10 pt-6 border-t border-white/10"
                                 >
-                                    {/* Decorative background elements */}
-                                    <motion.div
-                                        className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl"
-                                        animate={{
-                                            scale: [1, 1.2, 1],
-                                            opacity: [0.1, 0.15, 0.1]
-                                        }}
-                                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                                    />
-                                    <motion.div
-                                        className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl"
-                                        animate={{
-                                            scale: [1, 1.3, 1],
-                                            opacity: [0.05, 0.1, 0.05]
-                                        }}
-                                        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                                    />
-
-                                    {/* Gold accent line */}
-                                    <motion.div
-                                        className="absolute top-0 left-0 w-1 h-full bg-linear-to-b from-transparent via-gold to-transparent"
-                                        initial={{ scaleY: 0 }}
-                                        animate={{ scaleY: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.2 }}
-                                    />
-
-                                    {/* Menu Content */}
-                                    <div className="relative z-10 p-8 pt-28">
-                                        {/* Navigation Links */}
-                                        <nav className="flex flex-col gap-2">
-                                            {navLinks.map((link, i) => (
-                                                <motion.div
-                                                    key={link.name}
-                                                    initial={{ opacity: 0, x: 50 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{
-                                                        delay: i * 0.08,
-                                                        type: "spring",
-                                                        stiffness: 300,
-                                                        damping: 24
-                                                    }}
-                                                    className="border-b border-white/5"
-                                                >
-                                                    {link.dropdown ? (
-                                                        <div>
-                                                            {/* Dropdown Trigger */}
-                                                            <button
-                                                                onClick={() => setMobileDropdownOpen(!mobileDropdownOpen)}
-                                                                className="w-full flex items-center justify-between py-4 px-4 text-xl font-medium text-white hover:text-gold transition-colors group"
-                                                            >
-                                                                <span>{link.name}</span>
-                                                                <motion.div
-                                                                    animate={{ rotate: mobileDropdownOpen ? 180 : 0 }}
-                                                                    transition={{ duration: 0.3 }}
-                                                                >
-                                                                    <ChevronDown className="w-5 h-5 group-hover:text-gold transition-colors" />
-                                                                </motion.div>
-                                                            </button>
-
-                                                            {/* Dropdown Items */}
-                                                            <AnimatePresence>
-                                                                {mobileDropdownOpen && (
-                                                                    <motion.div
-                                                                        initial={{ height: 0, opacity: 0 }}
-                                                                        animate={{ height: "auto", opacity: 1 }}
-                                                                        exit={{ height: 0, opacity: 0 }}
-                                                                        transition={{
-                                                                            duration: 0.3,
-                                                                            ease: "easeInOut"
-                                                                        }}
-                                                                        className="overflow-hidden bg-zinc-900/50 rounded-2xl mb-2"
-                                                                    >
-                                                                        <div className="py-2">
-                                                                            {link.dropdown.map((item, idx) => (
-                                                                                <motion.div
-                                                                                    key={item.name}
-                                                                                    initial={{ opacity: 0, x: -20 }}
-                                                                                    animate={{ opacity: 1, x: 0 }}
-                                                                                    transition={{
-                                                                                        delay: idx * 0.05,
-                                                                                        type: "spring",
-                                                                                        stiffness: 400
-                                                                                    }}
-                                                                                >
-                                                                                    <Link
-                                                                                        href={item.href}
-                                                                                        onClick={() => {
-                                                                                            setIsOpen(false);
-                                                                                            setMobileDropdownOpen(false);
-                                                                                        }}
-                                                                                        className="block py-3 px-6 text-base text-white/70 hover:text-gold hover:bg-gold/5 transition-all group/item"
-                                                                                    >
-                                                                                        <span className="flex items-center justify-between">
-                                                                                            <span>{item.name}</span>
-                                                                                            <span className="text-gold/0 group-hover/item:text-gold transition-colors">→</span>
-                                                                                        </span>
-                                                                                    </Link>
-                                                                                </motion.div>
-                                                                            ))}
-                                                                        </div>
-                                                                    </motion.div>
-                                                                )}
-                                                            </AnimatePresence>
-                                                        </div>
-                                                    ) : (
-                                                        <Link
-                                                            href={link.href}
-                                                            onClick={() => setIsOpen(false)}
-                                                            className="block py-4 px-4 text-xl font-medium text-white hover:text-gold transition-colors"
-                                                        >
-                                                            {link.name}
-                                                        </Link>
-                                                    )}
-                                                </motion.div>
-                                            ))}
-                                        </nav>
-
-                                        {/* CTA Button */}
-                                        <motion.div
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: 0.4 }}
-                                            className="mt-8"
-                                        >
-                                            <Link
-                                                href="/contact"
-                                                onClick={() => setIsOpen(false)}
-                                                className="block w-full py-4 text-center bg-gold text-black font-bold rounded-2xl hover:bg-gold/90 transition-all"
-                                            >
-                                                Contact Us
-                                            </Link>
-                                        </motion.div>
-
-                                        {/* Contact Info */}
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            transition={{ delay: 0.5 }}
-                                            className="mt-12 pt-8 border-t border-white/10"
-                                        >
-                                            <p className="text-white/40 text-sm mb-3">Get in touch</p>
-                                            <a href="tel:+97141234567" className="block text-white/70 hover:text-gold transition-colors mb-2">
-                                                +971 4 123 4567
-                                            </a>
-                                            <a href="mailto:info@burjglobal.com" className="block text-white/70 hover:text-gold transition-colors">
-                                                info@burjglobal.com
-                                            </a>
-                                        </motion.div>
-                                    </div>
+                                    <p className="text-white/40 text-sm mb-3">Get in touch</p>
+                                    <a href="tel:+97141234567" className="block text-white/70 hover:text-gold transition-colors mb-2 text-sm">
+                                        +971 4 123 4567
+                                    </a>
+                                    <a href="mailto:info@burjglobal.com" className="block text-white/70 hover:text-gold transition-colors text-sm">
+                                        info@burjglobal.com
+                                    </a>
                                 </motion.div>
-                            </>
-                        )}
-                    </AnimatePresence>
-                </div>
-            </div>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 }

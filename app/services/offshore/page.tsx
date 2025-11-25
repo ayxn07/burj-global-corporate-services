@@ -104,7 +104,6 @@ export default function OffshorePage() {
                             {
                                 name: "RAK ICC Offshore",
                                 icon: "🏝️",
-                                cost: "AED 7,500/year",
                                 features: [
                                     "No physical office required",
                                     "Zero corporate tax",
@@ -119,7 +118,6 @@ export default function OffshorePage() {
                             {
                                 name: "JAFZA Offshore",
                                 icon: "⚓",
-                                cost: "AED 11,500/year",
                                 features: [
                                     "Dubai-based jurisdiction",
                                     "Zero corporate tax",
@@ -136,10 +134,7 @@ export default function OffshorePage() {
                                 <div className="absolute inset-0 bg-gold/20 rounded-3xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative p-8 bg-black rounded-3xl border-2 border-gold/20 group-hover:border-gold transition-all h-full">
                                     <div className="text-6xl mb-4 text-center">{jurisdiction.icon}</div>
-                                    <h3 className="text-2xl font-bold text-gold mb-2 text-center">{jurisdiction.name}</h3>
-                                    <div className="text-center mb-6">
-                                        <span className="text-3xl font-bold text-white">{jurisdiction.cost}</span>
-                                    </div>
+                                    <h3 className="text-2xl font-bold text-gold mb-6 text-center">{jurisdiction.name}</h3>
                                     <ul className="space-y-3">
                                         {jurisdiction.features.map((feature, idx) => (
                                             <li key={idx} className="flex items-start gap-3 text-white/80">
