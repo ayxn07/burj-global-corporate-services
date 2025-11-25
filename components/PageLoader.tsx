@@ -23,11 +23,11 @@ export default function PageLoader({ children }: { children: React.ReactNode }) 
             setProgress(100);
             setTimeout(() => {
                 setIsLoading(false);
-            }, 500);
+            }, 1500); // Increased loader display time
         };
 
         if (document.readyState === "complete") {
-            setTimeout(handleLoad, 1500);
+            setTimeout(handleLoad, 2500); // Increased loader display time for instant ready
         } else {
             window.addEventListener("load", handleLoad);
             return () => {
