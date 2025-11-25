@@ -249,9 +249,20 @@ export default function Navbar() {
                                 damping: 30,
                                 stiffness: 300
                             }}
-                            className="fixed top-0 -right-5 h-screen w-[85vw] max-w-sm bg-black border-l-2 border-gold/30 z-60 lg:hidden"
+                            className="fixed top-0 right-0 h-screen w-[85vw] max-w-sm bg-black border-l-2 border-gold/30 z-60 lg:hidden"
                             style={{ height: '100dvh' }}
                         >
+                            {/* Close Button */}
+                            <motion.button
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2 }}
+                                onClick={() => setIsOpen(false)}
+                                className="absolute top-6 right-6 z-20 w-10 h-10 flex items-center justify-center rounded-full bg-gold/10 border border-gold/30 text-white hover:bg-gold/20 hover:text-gold transition-all"
+                            >
+                                <X className="w-5 h-5" />
+                            </motion.button>
+
                             {/* Decorative background elements */}
                             <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl pointer-events-none" />
                             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gold/5 rounded-full blur-3xl pointer-events-none" />
