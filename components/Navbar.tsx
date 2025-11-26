@@ -25,6 +25,8 @@ const navLinks = [
             { name: "Marketing & PR", href: "/services/marketing-pr" },
         ],
     },
+    { name: "Online Services", href: "/services/online-services" },
+    { name: "Dubai Approvals", href: "/services/dubai-approvals" },
     { name: "Why Us?", href: "/why-us" },
 ];
 
@@ -59,7 +61,7 @@ export default function Navbar() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-6xl"
+            className="fixed top-3 sm:top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-1.5rem)] sm:w-[calc(100%-3rem)] max-w-7xl"
         >
             <div
                 className={cn(
@@ -69,7 +71,7 @@ export default function Navbar() {
             >
                 <div className="flex items-center justify-between">
                     <Link href="/" className="relative z-50" data-magnetic>
-                        <div className="relative h-14 w-36 sm:h-20 sm:w-50 overflow-hidden">
+                        <div className="relative h-28 w-40 sm:h-24 sm:w-56 overflow-hidden">
                             <Image
                                 src="/Logo.jpeg"
                                 alt="Burj Global Logo"
@@ -91,7 +93,7 @@ export default function Navbar() {
                             >
                                 <Link
                                     href={link.href}
-                                    className="text-sm font-medium text-white/90 hover:text-gold transition-colors flex items-center gap-1"
+                                    className="text-base font-medium text-white/90 hover:text-gold transition-colors flex items-center gap-1"
                                     data-magnetic
                                 >
                                     {link.name}
@@ -187,7 +189,7 @@ export default function Navbar() {
                                 )}
                             </div>
                         ))}
-                        <MagneticButton variant="primary" href="/contact" className="text-sm">
+                        <MagneticButton variant="primary" href="/contact" className="text-base">
                             Contact Us
                         </MagneticButton>
                     </div>

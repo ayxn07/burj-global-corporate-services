@@ -55,15 +55,11 @@ export default function Home() {
   return (
     <div className="bg-black">
       <AnimatedHero
-        title="Make Dubai Your Business. We Make Everything Else Easy."
-        subtitle="End-to-end UAE business setup, licensing, visas, PRO support, compliance, branding, and marketing—all managed seamlessly by Burj Global."
+        title="Your Gateway to Doing Business in Dubai—Effortless, Fast, Reliable."
+        subtitle="Burj Global manages your licensing, visas, PRO services, compliance, and complete branding under one roof."
         ctaText="Start Your Business Today"
         ctaLink="/contact"
       />
-
-      {/* Perspective Grid Section */}
-      <PerspectiveGrid />
-
 
       {/* Who We Are Section */}
       <section className="py-16 sm:py-24 bg-zinc-900/50">
@@ -113,9 +109,9 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10"
+              className="relative h-[550px] rounded-2xl overflow-hidden border border-white/10 aspect-square "
             >
-              <img src="Homepage-Main.png" className="object-cover h-full w-full" alt="" />
+              <img src="Hero-section-square.png" className="object-cover h-full w-full" alt="" />
             </motion.div>
           </div>
         </div>
@@ -160,8 +156,8 @@ export default function Home() {
       </section>
 
       {/* How We Work - Process Section */}
-      <section className="py-16 sm:py-24 bg-zinc-900/30">
-        <div className="container mx-auto px-6">
+      <section className="pt-16 pb-20 sm:pt-20 sm:pb-24 bg-zinc-900/30">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -174,61 +170,78 @@ export default function Home() {
               centered
             />
           </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-4xl mx-auto">
-            {[
-              { step: "01", title: "Consultation", desc: "Free consultation to understand your business needs and recommend the best structure.", icon: <Target className="w-10 h-10" /> },
-              { step: "02", title: "Documentation", desc: "We prepare all required documents with precision and handle government approvals.", icon: <FileCheck className="w-10 h-10" /> },
-              { step: "03", title: "Formation", desc: "Complete company formation, license issuance, and visa processing.", icon: <Building2 className="w-10 h-10" /> },
-              { step: "04", title: "Growth Support", desc: "Ongoing compliance, marketing, and business development services.", icon: <TrendingUp className="w-10 h-10" /> },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.15, duration: 0.7, ease: "easeOut" }}
-                viewport={{ once: true }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                className="relative group"
-              >
-                {/* Glow effect */}
-                <div className="absolute inset-0 bg-linear-to-br from-gold/30 via-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl blur-2xl" />
+          
+          {/* Process Timeline */}
+          <div className="mt-10 relative">
+            {/* Connection Line - Desktop */}
+            <div className="hidden lg:block absolute top-7 left-[12.5%] right-[12.5%] h-0.5 bg-linear-to-r from-gold/20 via-gold/40 to-gold/20 z-0" />
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4 mb-15">
+              {[
+                { step: "01", title: "Consultation", desc: "Free consultation to understand your business needs and recommend the best structure.", icon: <Target className="w-8 h-8" /> },
+                { step: "02", title: "Documentation", desc: "We prepare all required documents with precision and handle government approvals.", icon: <FileCheck className="w-8 h-8" /> },
+                { step: "03", title: "Formation", desc: "Complete company formation, license issuance, and visa processing.", icon: <Building2 className="w-8 h-8" /> },
+                { step: "04", title: "Growth Support", desc: "Ongoing compliance, marketing, and business development services.", icon: <TrendingUp className="w-8 h-8" /> },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.6, ease: "easeOut" }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                >
+                  {/* Card */}
+                  <div className="relative h-full ">
+                    {/* Step Number - Top */}
+                    <div className="flex justify-center mb-4 relative z-10">
+                      <div className="w-14 h-14 rounded-full bg-black border-2 border-gold flex items-center justify-center text-gold font-bold text-lg group-hover:bg-gold group-hover:text-black transition-all duration-300 shadow-lg shadow-gold/20">
+                        {item.step}
+                      </div>
+                    </div>
+                    
+                    {/* Content Card */}
+                    <div className="relative p-6 rounded-2xl bg-zinc-900/60 border border-white/10 group-hover:border-gold/50 transition-all duration-500 h-full -mb-13 backdrop-blur-sm">
+                      {/* Hover Glow */}
+                      <div className="absolute inset-0 rounded-2xl bg-linear-to-b from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className="relative z-10">
+                        {/* Icon */}
+                        <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center text-gold mb-4 group-hover:bg-gold/20 transition-all duration-300 mx-auto">
+                          {item.icon}
+                        </div>
 
-                {/* Card */}
-                <div className="relative p-8 rounded-3xl border-2 border-gold/20 bg-linear-to-br from-black via-zinc-900/80 to-black group-hover:border-gold transition-all duration-500 h-full">
-                  {/* Step number badge */}
-                  <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-linear-to-br from-gold to-gold/60 flex items-center justify-center text-black font-bold text-xl shadow-xl shadow-gold/50 border-4 border-black">
-                    {item.step}
-                  </div>
+                        {/* Title */}
+                        <h3 className="text-xl font-bold text-white mb-3 text-center group-hover:text-gold transition-colors">
+                          {item.title}
+                        </h3>
 
-                  {/* Icon */}
-                  <div className="mb-6 inline-flex p-4 rounded-2xl bg-gold/10 border border-gold/30 group-hover:bg-gold group-hover:border-gold transition-all duration-300">
-                    <div className="text-gold group-hover:text-black transition-colors">
-                      {item.icon}
+                        {/* Description */}
+                        <p className="text-white/60 leading-relaxed text-sm text-center group-hover:text-white/80 transition-colors">
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-gold transition-colors">
-                    {item.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-white/60 leading-relaxed text-base group-hover:text-white/80 transition-colors">
-                    {item.desc}
-                  </p>
-
-                  {/* Decorative corner accent */}
-                  <div className="absolute bottom-4 right-4 w-12 h-12 border-r-2 border-b-2 border-gold/30 group-hover:border-gold transition-colors rounded-br-2xl" />
-                </div>
-              </motion.div>
-            ))}
+                  
+                  {/* Arrow to next - Desktop only */}
+                  {i < 3 && (
+                    <div className="hidden lg:flex absolute top-7 -right-2 z-20 text-gold/50 group-hover:text-gold transition-colors">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Industries We Serve */}
       <section className="py-16 sm:py-24">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

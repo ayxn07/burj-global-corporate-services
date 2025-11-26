@@ -18,7 +18,7 @@ export default function AnimatedHero({
     subtitle,
     ctaText = "Get Started",
     ctaLink = "/contact",
-    backgroundImage = "/Hero-Section-Images/Hero-section-image-1.png", // Fallback
+    backgroundImage = "Main-Image.png", // Fallback
 }: AnimatedHeroProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const { scrollY } = useScroll();
